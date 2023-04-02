@@ -37,8 +37,8 @@ public class MazeGenerator : MonoBehaviour
         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
     };
     
-    [SerializeField]
-    private int scaleSize = 5;
+    [SerializeField] private int scaleSize = 5;
+    [SerializeField] private GameObject wallPrefab;
 
     void Start()
     {
@@ -50,7 +50,7 @@ public class MazeGenerator : MonoBehaviour
         for(int x = 0; x < maze.GetLength(0); x++){
             for(int y = 0; y < maze.GetLength(1); y++){
                 if(maze[x, y] == 1){
-                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    GameObject cube = Instantiate(wallPrefab, new Vector3(0, 0, 0), Quaternion.identity);
                     cube.transform.position = new Vector3(x*scaleSize, scaleSize, y*scaleSize);
                     cube.transform.localScale = new Vector3(scaleSize, scaleSize*2, scaleSize);
                     cube.transform.parent = this.transform;
