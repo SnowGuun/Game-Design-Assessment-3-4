@@ -16,6 +16,7 @@ public class PoliceController : MonoBehaviour
     {        
         currentTarget = pointB;
     }
+    
 
     void Update()
     {
