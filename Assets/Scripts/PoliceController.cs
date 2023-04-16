@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PoliceController : MonoBehaviour
 {
-    private Vector3 currentTile, nextTile;
+    private Vector3 nextTile;
     private string currentDir, excludedDir;
     private bool reachedTile = true;
     private bool chasingPlayer = false;
@@ -27,7 +27,6 @@ public class PoliceController : MonoBehaviour
 
         if(hitData.transform.name == "Player"){ 
             if(!chasingPlayer){
-                nextTile = currentTile;
                 reachedTile = true;
                 speed = 15f;
             }
@@ -55,7 +54,6 @@ public class PoliceController : MonoBehaviour
     }
 
     private void setNewTile(int cX, int cZ){
-        currentTile = nextTile;
         bool up = MazeData.isWallAtTile(cX, cZ+1);
         bool down = MazeData.isWallAtTile(cX, cZ-1);
         bool left = MazeData.isWallAtTile(cX-1, cZ);
@@ -92,14 +90,13 @@ public class PoliceController : MonoBehaviour
         reachedTile = false;
     }
     private void setChaseTile(int cX, int cZ, int pX, int pZ){
-        currentTile = nextTile;
         string[] tempDirToP = {"n","n","n","n"};
         int counter = 0;
         if(pX > cX){ tempDirToP[counter] = "right"; counter += 1; }
         if(pX < cX){ tempDirToP[counter] = "left"; counter += 1; }
         if(pZ > cZ){ tempDirToP[counter] = "up"; counter += 1; }
         if(pZ < cZ){ tempDirToP[counter] = "down"; counter += 1; }
-        Debug.Log("Preferred: " + tempDirToP[0] + tempDirToP[1] + tempDirToP[2] + tempDirToP[3]);
+        //Debug.Log("Preferred: " + tempDirToP[0] + tempDirToP[1] + tempDirToP[2] + tempDirToP[3]);
 
         bool up = MazeData.isWallAtTile(cX, cZ+1);
         bool down = MazeData.isWallAtTile(cX, cZ-1);
@@ -112,7 +109,7 @@ public class PoliceController : MonoBehaviour
         if(!down){ tempWalkableDir[counter] = "down"; counter += 1; }
         if(!left){ tempWalkableDir[counter] = "left"; counter += 1; }
         if(!right){ tempWalkableDir[counter] = "right"; counter += 1; }
-        Debug.Log("Walkable: " + tempWalkableDir[0] + tempWalkableDir[1] + tempWalkableDir[2] + tempWalkableDir[3]);
+        //Debug.Log("Walkable: " + tempWalkableDir[0] + tempWalkableDir[1] + tempWalkableDir[2] + tempWalkableDir[3]);
 
         counter = 0;
         string[] dir = {"n", "n"};
@@ -126,7 +123,7 @@ public class PoliceController : MonoBehaviour
                 }
             }
         }
-        Debug.Log("final: " + dir[0] + ", " + dir[1]);
+        //Debug.Log("final: " + dir[0] + ", " + dir[1]);
 
         if(counter == 1){ currentDir = dir[0]; }
         else{ currentDir = dir[Random.Range(0, 1)]; }
