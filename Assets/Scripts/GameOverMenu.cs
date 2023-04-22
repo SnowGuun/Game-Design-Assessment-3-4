@@ -7,56 +7,69 @@ public class GameOverMenu : MonoBehaviour
 {
     public static bool isGameOver = false;
 
-    public Transform Player;
+    public Transform Players;
 
     [SerializeField] GameObject gameOverMenu;
 
-    CursorLockMode desiredMode;
+    CursorLockMode desiredModes;
 
 
     void update()
     {
-        if (isGameOver)
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            GameOver();
-        }
-        else
-        {
-            GameNotOver();
+            if (isGameOver)
+            {
+                GameOver();
+            }
+            else
+            {
+                GameNotOver();
+            }
         }
     }
 
     public void GameOver()
     {
-        isGameOver = false;
-        Cursor.visible = false;
-        desiredMode = CursorLockMode.Confined;
+        gameOverMenu.SetActive(true);
+        Time.timeScale = 0f;
+        isGameOver = true;
+        Players.GetComponent<FirstPersonController>().enabled = false;
+        Cursor.visible = true;
+        desiredModes = CursorLockMode.None;
+        {
+            Cursor.lockState = desiredModes;
+        }
     }
+
 
     public void GameNotOver()
     {
+        gameOverMenu.SetActive(false);
+        Time.timeScale = 1f;
         isGameOver = false;
-        Cursor.visible = true;
-        desiredMode = CursorLockMode.None;
-        {
-            Cursor.lockState = desiredMode;
-        }
-    }
+        Players.GetComponent<FirstPersonController>().enabled = true;
+        Cursor.visible = false;
+        desiredModes = CursorLockMode.Confined;
+       }
 
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
+        Time.timeScale = 1f;
     }
 
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1f;
     }
 
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
-        
+        Time.timeScale = 1f;
+
     }
 
     public void QuitGame()
