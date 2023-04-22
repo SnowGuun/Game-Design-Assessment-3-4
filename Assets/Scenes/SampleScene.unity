@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 34, y: -40}
+  m_AnchoredPosition: {x: 33.99994, y: -40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &38317963
@@ -588,6 +588,7 @@ GameObject:
   - component: {fileID: 621063451}
   - component: {fileID: 621063450}
   - component: {fileID: 621063454}
+  - component: {fileID: 621063455}
   m_Layer: 5
   m_Name: PauseMenuCanvas
   m_TagString: Untagged
@@ -691,6 +692,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 800036483}
   pauseMenu: {fileID: 1866861972}
+--- !u!225 &621063455
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621063449}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &700343585
 GameObject:
   m_ObjectHideFlags: 0
