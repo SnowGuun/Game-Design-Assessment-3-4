@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] GameObject pauseMenu;
 
+    CursorLockMode desiredMode;
 
     // Update is called once per frame
     void Update()
@@ -35,6 +36,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isGamePaused = false;
         Player.GetComponent<FirstPersonController>().enabled = true;
+        Cursor.visible = false;
+        desiredMode = CursorLockMode.Confined;
     }
 
     public void PauseGame()
@@ -43,6 +46,11 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         isGamePaused = true;
         Player.GetComponent<FirstPersonController>().enabled = false;
+        Cursor.visible = true;
+        desiredMode = CursorLockMode.None;
+        {
+            Cursor.lockState = desiredMode;
+        }
     }
 
     public void LoadMenu()
