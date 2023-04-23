@@ -18,6 +18,10 @@ public class PoliceController : MonoBehaviour
 
     void Update()
     {
+        if(Vector3.Distance(transform.position, player.transform.position) <= 7){
+            LoseCondition.lose();
+        }
+
         Ray ray = new Ray(transform.position, player.transform.position - transform.position);
         RaycastHit hitData;
         Physics.Raycast(ray, out hitData);
