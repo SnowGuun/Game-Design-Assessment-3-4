@@ -26,15 +26,20 @@ public class PoliceController : MonoBehaviour
         RaycastHit hitData;
         Physics.Raycast(ray, out hitData);
 
-        int cX = (int)(((transform.position.x - (transform.position.x % 10)) / 10));
-        int cZ = (int)(((transform.position.z - (transform.position.z % 10)) / 10));
+        int cX = (int)(((transform.position.x - ((transform.position.x + 5) % 10)) / 10) + 1);
+        int cZ = (int)(((transform.position.z - ((transform.position.z + 5) % 10)) / 10) + 1);
 
         if(hitData.transform.name == "Player"){ 
-            if(!chasingPlayer){
-                reachedTile = true;
-                speed = 15f;
+            if(Vector3.Angle(transform.forward, player.transform.position - transform.position) < 110){
+                if(!chasingPlayer){
+                    speed = 12f;
+                }
+                chasingPlayer = true; 
             }
-            chasingPlayer = true; 
+            else{
+                speed = 5f;
+                chasingPlayer = false; 
+            }
         }
         else{ 
             speed = 5f;
@@ -58,6 +63,7 @@ public class PoliceController : MonoBehaviour
     }
 
     private void setNewTile(int cX, int cZ){
+        transform.position = nextTile;
         bool up = MazeData.isWallAtTile(cX, cZ+1);
         bool down = MazeData.isWallAtTile(cX, cZ-1);
         bool left = MazeData.isWallAtTile(cX-1, cZ);
@@ -69,6 +75,7 @@ public class PoliceController : MonoBehaviour
         if(!down) { dir[walkableAreas] = "down"; walkableAreas += 1; }
         if(!left) { dir[walkableAreas] = "left"; walkableAreas += 1; }
         if(!right) { dir[walkableAreas] = "right"; walkableAreas += 1; }
+        Debug.Log("Up: " + up + " Down: " + down + " Left: " + left + " Right: " + right);
 
         if(walkableAreas <= 1){
             currentDir = dir[Random.Range(0, walkableAreas)];
@@ -92,8 +99,10 @@ public class PoliceController : MonoBehaviour
             default: break;
         }
         reachedTile = false;
+        transform.LookAt(nextTile, Vector3.up);
     }
     private void setChaseTile(int cX, int cZ, int pX, int pZ){
+        transform.position = nextTile;
         string[] tempDirToP = {"n","n","n","n"};
         int counter = 0;
         if(pX > cX){ tempDirToP[counter] = "right"; counter += 1; }
@@ -145,6 +154,7 @@ public class PoliceController : MonoBehaviour
             default: break;
         }
         reachedTile = false;
+        transform.LookAt(nextTile, Vector3.up);
     }
 }
 
