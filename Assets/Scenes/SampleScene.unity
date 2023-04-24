@@ -1550,7 +1550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &62092253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1564,8 +1564,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  turningSpeed: 0
   player: {fileID: 800036478}
-  tagged: 0
+  loadedTiles: []
+  flag: 0
 --- !u!65 &62092254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8682,7 +8684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &414439629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8696,8 +8698,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  turningSpeed: 0
   player: {fileID: 800036478}
-  tagged: 0
+  loadedTiles: []
+  flag: 0
 --- !u!65 &414439630
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36255,8 +36259,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  turningSpeed: 0
   player: {fileID: 800036478}
-  tagged: 0
+  loadedTiles: []
+  flag: 0
 --- !u!65 &1647276941
 BoxCollider:
   m_ObjectHideFlags: 0

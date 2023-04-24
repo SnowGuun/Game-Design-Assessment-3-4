@@ -17,7 +17,8 @@ public class PoliceController : MonoBehaviour
     void Start() {
         int cX = (int)((transform.position.x - (transform.position.x % 10)) / 10);
         int cZ = (int)((transform.position.z - (transform.position.z % 10)) / 10);
-        nextTile = new Vector3(cX*10, 5, cZ*10);
+        nextTile = new Vector3(cX, 5, cZ);
+        Debug.Log("starting at: " + transform.position);
     }
 
     void Update()
@@ -28,7 +29,8 @@ public class PoliceController : MonoBehaviour
             LoseCondition.lose();
         }
 
-        if(Vector3.Distance(transform.position, nextTile) < 0.1f){
+        if(Vector3.Distance(transform.position, new Vector3(nextTile.x*10, 5, nextTile.z*10)) < 0.1f){
+            Debug.Log("Reached Tile");
             reachedTile = true;
         }
 
@@ -50,17 +52,19 @@ public class PoliceController : MonoBehaviour
                 turningSpeed = 3f;
             }
         }
-        if(turning){
-            if(Vector3.Angle(transform.forward, new Vector3(nextTile.x*10, 5, nextTile.z*10) - new Vector3(prevTile.x*10, 5, prevTile.z*10)) == 0){
-                turning = false;
-                reachedTile = false;
-            }
-            else{
+
+        // if(turning){
+        //     if(Vector3.Angle(transform.forward, new Vector3(nextTile.x*10, 5, nextTile.z*10) - new Vector3(prevTile.x*10, 5, prevTile.z*10)) == 0){
+        //         turning = false;
+        //         reachedTile = false;
+        //     }
+        //     else{
                 
-            }
-        }
-        else if(reachedTile){
-            transform.position = nextTile;
+        //     }
+        // }
+        if(reachedTile){
+            Vector3 truePos = new Vector3(nextTile.x*10, 5, nextTile.z*10);
+            transform.position = truePos;
             oldDir = currentDir;
             if(loadedTiles.Length > 0){
                 prevTile = nextTile;
@@ -91,6 +95,12 @@ public class PoliceController : MonoBehaviour
                 bool down = MazeData.isWallAtTile(cX, cZ-1);
                 bool left = MazeData.isWallAtTile(cX-1, cZ);
                 bool right = MazeData.isWallAtTile(cX+1, cZ);
+                Debug.Log(
+                    "up: " + up + "\n" + 
+                    "down: " + down + "\n" + 
+                    "left: " + left + "\n" + 
+                    "right: " + right + "\n"
+                );
 
                 int walkableAreas = 0;
                 string[] dir = new string[4];
@@ -108,11 +118,12 @@ public class PoliceController : MonoBehaviour
 
                 if(currentDir == "up"){ excludedDir = "down"; nextTile = new Vector3(cX, 5, cZ+1); } 
                 else if(currentDir == "down"){ excludedDir = "up"; nextTile = new Vector3(cX, 5, cZ-1); } 
-                else if(currentDir == "left"){ excludedDir = "right"; nextTile = new Vector3(cX+1, 5, cZ); } 
-                else if(currentDir == "right"){ excludedDir = "left"; nextTile = new Vector3(cX-1, 5, cZ); }
+                else if(currentDir == "left"){ excludedDir = "right"; nextTile = new Vector3(cX-1, 5, cZ); } 
+                else if(currentDir == "right"){ excludedDir = "left"; nextTile = new Vector3(cX+1, 5, cZ); }
             }
-            if(currentDir != oldDir){ turning = true; }
-            else{ reachedTile = false; }
+            // if(currentDir != oldDir){ turning = true; }
+            // else{ reachedTile = false; }
+            reachedTile = false;
         }
         else{
             Vector3 truePos = new Vector3(nextTile.x*10, 5, nextTile.z*10);
