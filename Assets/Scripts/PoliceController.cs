@@ -32,12 +32,12 @@ public class PoliceController : MonoBehaviour
         if(hitData.transform.name == "Player"){ 
             if(Vector3.Angle(transform.forward, player.transform.position - transform.position) < 110){
                 if(!chasingPlayer){
-                    speed = 12f;
+                    speed = 25f;
                 }
                 chasingPlayer = true; 
             }
             else{
-                speed = 5f;
+                speed = 7f;
                 chasingPlayer = false; 
             }
         }
