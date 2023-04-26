@@ -1532,9 +1532,9 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53199545}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &60958087 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 6105687330844722171, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
+--- !u!4 &60958085 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6105687330844722172, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
   m_PrefabInstance: {fileID: 6105687330196254344}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &62641361
@@ -8306,7 +8306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 800036483}
-  playerCamera: {fileID: 60958087}
+  playerCamera: {fileID: 60958085}
 --- !u!1 &437120999
 GameObject:
   m_ObjectHideFlags: 0
