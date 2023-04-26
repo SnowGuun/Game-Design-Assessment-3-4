@@ -1532,6 +1532,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53199545}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!20 &60958087 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6105687330844722171, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
+  m_PrefabInstance: {fileID: 6105687330196254344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &62641361
 GameObject:
   m_ObjectHideFlags: 0
@@ -8301,6 +8306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 800036483}
+  playerCamera: {fileID: 60958087}
 --- !u!1 &437120999
 GameObject:
   m_ObjectHideFlags: 0
@@ -8628,8 +8634,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 135.5, y: 131.26813}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 246, y: 251}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455272421
 MonoBehaviour:
@@ -25254,7 +25260,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.23, y: 0.16}
-  m_SizeDelta: {x: 94, y: 94}
+  m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184046543
 MonoBehaviour:
@@ -47288,6 +47294,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6105687330672932873, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ccc6b758cf8a04623b1af77ee7a42f39, type: 2}
     - target: {fileID: 6105687330672932875, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
       propertyPath: m_RootOrder
       value: 2
