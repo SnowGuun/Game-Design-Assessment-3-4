@@ -1129,7 +1129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 34.000183, y: -40}
+  m_AnchoredPosition: {x: 34.000305, y: -40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &38317963
@@ -25182,7 +25182,6 @@ GameObject:
   - component: {fileID: 1187482170}
   - component: {fileID: 1187482172}
   - component: {fileID: 1187482171}
-  - component: {fileID: 1187482173}
   m_Layer: 5
   m_Name: Stamina
   m_TagString: Untagged
@@ -25307,19 +25306,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187482169}
   m_CullTransparentMesh: 1
---- !u!114 &1187482173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187482169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2962056f7ea2c7e4d9b6003856239bab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  staminaText: {fileID: 1187482171}
 --- !u!1 &1188498796
 GameObject:
   m_ObjectHideFlags: 0
@@ -45361,6 +45347,7 @@ GameObject:
   - component: {fileID: 2086124946}
   - component: {fileID: 2086124945}
   - component: {fileID: 2086124944}
+  - component: {fileID: 2086124948}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -45452,6 +45439,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2086124948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086124943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2962056f7ea2c7e4d9b6003856239bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaText: {fileID: 1187482171}
 --- !u!1 &2088160008
 GameObject:
   m_ObjectHideFlags: 0
