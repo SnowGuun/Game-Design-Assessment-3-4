@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FirstPersonController : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private bool canSprint = true;
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool canCrouch = true;
+    [SerializeField] private bool useStamina = true;
+
 
     [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
@@ -30,6 +33,16 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField, Range(1, 10)] private float lookSpeedY = 2.0f;
     [SerializeField, Range(1, 100)] private float upperLookLimit = 80.0f;
     [SerializeField, Range(1, 100)] private float lowerLookLimit = 80.0f;
+
+    [Header("Stamina Parameters")]
+    [SerializeField] private float maxStamina = 100;
+    [SerializeField] private float staminaUseMultiplier = 5;
+    [SerializeField] private float timeCooldown = 3;
+    [SerializeField] private float staminaValueIncrement = 2;
+    [SerializeField] private float staminaTimeIncrement = 0.1f;
+    private float currentStamina;
+    private Coroutine regeneratingStamina;
+    public static Action<float> onStaminaChange;
 
     [Header("Jumping Parameters")]
     [SerializeField] private float jumpForce = 8.0f;
@@ -59,6 +72,7 @@ public class FirstPersonController : MonoBehaviour
     {
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
+        currentStamina = maxStamina;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -77,7 +91,11 @@ public class FirstPersonController : MonoBehaviour
 
             if (canCrouch)
                 HandleCrouch();
+
+            if (useStamina)
+                HandleStamina();
         }
+
 
     }
     private void HandleMovementInput()
@@ -108,6 +126,33 @@ public class FirstPersonController : MonoBehaviour
     {
         if (ShouldCrouch)
             StartCoroutine(CrouchStand());
+    }
+
+    private void HandleStamina()
+    { 
+       if (isSprinting && currentInput != Vector2.zero)
+        {
+            if (regeneratingStamina != null)
+            {
+                StopCoroutine(regeneratingStamina);
+                regeneratingStamina = null;
+            }
+
+            currentStamina -= staminaUseMultiplier * Time.deltaTime;
+
+            if (currentStamina < 0)
+                currentStamina = 0;
+
+            onStaminaChange?.Invoke(currentStamina);
+
+            if (currentStamina <= 0)
+                canSprint = false;
+        }
+
+       if (!isSprinting &&  currentStamina < maxStamina && regeneratingStamina == null)
+        {
+            regeneratingStamina = StartCoroutine(RegenerateStamina());
+        }
     }
 
     private void ApplyFinalMovements()
@@ -149,6 +194,28 @@ public class FirstPersonController : MonoBehaviour
 
     }
 
+    private IEnumerator RegenerateStamina()
+    {
+        yield return new WaitForSeconds(timeCooldown);
+        WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement);
+
+        while (currentStamina < maxStamina)
+        {
+            if (currentStamina > 0) 
+            canSprint = true;
+
+            currentStamina += staminaValueIncrement;
+
+            if (currentStamina > maxStamina)
+                currentStamina = maxStamina;
+
+            onStaminaChange?.Invoke(currentStamina);
+
+            yield return timeToWait;
+
+        }
+        regeneratingStamina = null;
+    }
 
 
 }

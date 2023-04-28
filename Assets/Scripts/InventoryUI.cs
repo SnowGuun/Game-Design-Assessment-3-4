@@ -6,15 +6,33 @@ using TMPro;
 public class InventoryUI : MonoBehaviour
 {
     private TextMeshProUGUI bookText;
+    [SerializeField] private TextMeshProUGUI staminaText = default;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        bookText = GetComponent<TextMeshProUGUI>();
+        FirstPersonController.onStaminaChange += UpdateStamina;
     }
 
-   public void UpdateBookText(PlayerInventory playerInventory)
+    private void OnDisable()
+    {
+        FirstPersonController.onStaminaChange -= UpdateStamina;
+    }
+    // Start is called before the first frame update
+    private void Start()
+    {
+        bookText = GetComponent<TextMeshProUGUI>();
+        UpdateStamina(30);
+
+    }
+
+   
+    public void UpdateBookText(PlayerInventory playerInventory)
     {
         bookText.text = playerInventory.NumberOfBooks.ToString();
+    }
+
+    private void UpdateStamina(float currentStamina)
+    {
+        staminaText.text = currentStamina.ToString("00");
     }
 }
