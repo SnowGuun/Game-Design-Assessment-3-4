@@ -47547,6 +47547,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 800036492}
     - target: {fileID: 6105687330672933111, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
+      propertyPath: sprintStepMultiplier
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105687330672933111, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
       propertyPath: staminaTimeIncrement
       value: 0.5
       objectReference: {fileID: 0}

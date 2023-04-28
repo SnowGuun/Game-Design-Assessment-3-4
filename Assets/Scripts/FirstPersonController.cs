@@ -62,7 +62,7 @@ public class FirstPersonController : MonoBehaviour
     [Header("Footstep Parameters")]
     [SerializeField] private float baseStepSpeed = 0.5f;
     [SerializeField] private float crouchStepMultiplier = 1.5f;
-    [SerializeField] private float sprintStepMultiplier = 0.6f;
+    [SerializeField] private float sprintStepMultiplier = 0.2f;
     [SerializeField] private AudioSource footstepAudioSource = default;
     [SerializeField] private AudioClip[] prisonClip = default;
     private float footstepTimer = 0;
@@ -176,18 +176,15 @@ public class FirstPersonController : MonoBehaviour
 
         if (footstepTimer <= 0)
         {
-            if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, 30))
+            if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, 10))
             {
-              /*  switch (hit.collider.tag)
+              switch (hit.collider.tag)
                 {
                     case "floor":
                         footstepAudioSource.PlayOneShot(prisonClip[Random.Range(0, prisonClip.Length - 1)]);
                         break;
-                }*/
-              if (hit.collider.tag == "floor")
-                {
-                    footstepAudioSource.PlayOneShot(prisonClip[Random.Range(0, prisonClip.Length - 1)]);
                 }
+
             }
             footstepTimer = getCurrentOffset;
         }
