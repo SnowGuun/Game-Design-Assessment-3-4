@@ -176,13 +176,17 @@ public class FirstPersonController : MonoBehaviour
 
         if (footstepTimer <= 0)
         {
-            if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, 3))
+            if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, 30))
             {
-                switch (hit.collider.tag)
+              /*  switch (hit.collider.tag)
                 {
                     case "floor":
                         footstepAudioSource.PlayOneShot(prisonClip[Random.Range(0, prisonClip.Length - 1)]);
                         break;
+                }*/
+              if (hit.collider.tag == "floor")
+                {
+                    footstepAudioSource.PlayOneShot(prisonClip[Random.Range(0, prisonClip.Length - 1)]);
                 }
             }
             footstepTimer = getCurrentOffset;

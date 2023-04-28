@@ -1129,7 +1129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 34.000244, y: -40}
+  m_AnchoredPosition: {x: 34.000183, y: -40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &38317963
@@ -47518,6 +47518,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6105687330672932876, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6105687330672932878, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
       propertyPath: onBookCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -47533,6 +47537,10 @@ PrefabInstance:
     - target: {fileID: 6105687330672933111, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
       propertyPath: timeCooldown
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105687330672933111, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
+      propertyPath: standingCenter.y
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6105687330672933111, guid: ae61a889c663e4247ae8f4c7eb1466de, type: 3}
       propertyPath: footstepAudioSource
