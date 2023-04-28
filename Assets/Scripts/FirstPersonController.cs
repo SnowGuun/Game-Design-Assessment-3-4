@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random = UnityEngine.Random;
 
 public class FirstPersonController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool canCrouch = true;
     [SerializeField] private bool useStamina = true;
+    [SerializeField] private bool useFootsteps = true;
 
 
     [Header("Controls")]
@@ -57,7 +59,14 @@ public class FirstPersonController : MonoBehaviour
     private bool isCrouching;
     private bool duringCrouchAnimation;
 
-
+    [Header("Footstep Parameters")]
+    [SerializeField] private float baseStepSpeed = 0.5f;
+    [SerializeField] private float crouchStepMultiplier = 1.5f;
+    [SerializeField] private float sprintStepMultiplier = 0.6f;
+    [SerializeField] private AudioSource footstepAudioSource = default;
+    [SerializeField] private AudioClip[] prisonClip = default;
+    private float footstepTimer = 0;
+    private float getCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : isSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
 
 
     private Camera playerCamera;
@@ -94,6 +103,9 @@ public class FirstPersonController : MonoBehaviour
 
             if (useStamina)
                 HandleStamina();
+
+            if (useFootsteps)
+                HandleFootsteps();
         }
 
 
@@ -155,6 +167,28 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    private void HandleFootsteps()
+    {
+        if (!characterController.isGrounded) return;
+        if (currentInput == Vector2.zero) return;
+
+        footstepTimer -= Time.deltaTime;
+
+        if (footstepTimer <= 0)
+        {
+            if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, 3))
+            {
+                switch (hit.collider.tag)
+                {
+                    case "floor":
+                        footstepAudioSource.PlayOneShot(prisonClip[Random.Range(0, prisonClip.Length - 1)]);
+                        break;
+                }
+            }
+            footstepTimer = getCurrentOffset;
+        }
+    } 
+
     private void ApplyFinalMovements()
     {
        if (!characterController.isGrounded)
@@ -163,6 +197,8 @@ public class FirstPersonController : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
 
     }
+
+    
 
     private IEnumerator CrouchStand()
     {
