@@ -33,6 +33,6 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateStamina(float currentStamina)
     {
-        staminaText.text = currentStamina.ToString("00");
+        //staminaText.text = currentStamina.ToString("00");
     }
 }

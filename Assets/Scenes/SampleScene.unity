@@ -1129,7 +1129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 34.000244, y: -40}
+  m_AnchoredPosition: {x: 34.000122, y: -40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &38317963
@@ -23534,6 +23534,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 800036478}
+    - target: {fileID: 5730407474303014427, guid: 1737aaedde6f88842972d67009348f5a, type: 3}
+      propertyPath: gameOverMenuScript
+      value: 
+      objectReference: {fileID: 1607282768}
     - target: {fileID: 5730407474303014439, guid: 1737aaedde6f88842972d67009348f5a, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -25278,6 +25282,7 @@ GameObject:
   - component: {fileID: 1187482170}
   - component: {fileID: 1187482172}
   - component: {fileID: 1187482171}
+  - component: {fileID: 1187482173}
   m_Layer: 5
   m_Name: Stamina
   m_TagString: Untagged
@@ -25402,6 +25407,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187482169}
   m_CullTransparentMesh: 1
+--- !u!114 &1187482173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187482169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2962056f7ea2c7e4d9b6003856239bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaText: {fileID: 1187482171}
 --- !u!1 &1188498796
 GameObject:
   m_ObjectHideFlags: 0
@@ -32114,8 +32132,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190159
-  m_fontColor: {r: 0.31132078, g: 0, b: 0, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -35182,7 +35200,7 @@ GameObject:
   - component: {fileID: 1607282768}
   m_Layer: 5
   m_Name: GameOverCanvas
-  m_TagString: Untagged
+  m_TagString: GameOver
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41042,6 +41060,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 800036478}
+    - target: {fileID: 5730407474303014427, guid: 1737aaedde6f88842972d67009348f5a, type: 3}
+      propertyPath: gameOverMenuScript
+      value: 
+      objectReference: {fileID: 1607282768}
     - target: {fileID: 5730407474303014439, guid: 1737aaedde6f88842972d67009348f5a, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -47729,6 +47751,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 800036478}
+    - target: {fileID: 5730407474303014427, guid: 1737aaedde6f88842972d67009348f5a, type: 3}
+      propertyPath: gameOverMenuScript
+      value: 
+      objectReference: {fileID: 1607282768}
     - target: {fileID: 5730407474303014439, guid: 1737aaedde6f88842972d67009348f5a, type: 3}
       propertyPath: m_RootOrder
       value: 5

@@ -152,11 +152,16 @@ public class FirstPersonController : MonoBehaviour
 
             currentStamina -= staminaUseMultiplier * Time.deltaTime;
 
+      
+
             if (currentStamina < 0)
                 currentStamina = 0;
 
-            onStaminaChange?.Invoke(currentStamina);
+            
+           onStaminaChange?.Invoke(currentStamina);
 
+           
+            
             if (currentStamina <= 0)
                 canSprint = false;
         }
@@ -247,7 +252,7 @@ public class FirstPersonController : MonoBehaviour
                 currentStamina = maxStamina;
 
             onStaminaChange?.Invoke(currentStamina);
-
+            
             yield return timeToWait;
 
         }
