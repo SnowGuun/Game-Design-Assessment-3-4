@@ -11,6 +11,7 @@ public class PoliceController : MonoBehaviour
     public float speed = 0.01f;
     [SerializeField] private GameObject player;
     public bool tagged = false;
+    [SerializeField] private MazeData mD;
 
     void Start() {
         nextTile = transform.position;
@@ -64,10 +65,10 @@ public class PoliceController : MonoBehaviour
 
     private void setNewTile(int cX, int cZ){
         transform.position = nextTile;
-        bool up = MazeData.isWallAtTile(cX, cZ+1);
-        bool down = MazeData.isWallAtTile(cX, cZ-1);
-        bool left = MazeData.isWallAtTile(cX-1, cZ);
-        bool right = MazeData.isWallAtTile(cX+1, cZ);
+        bool up = mD.isWallAtTile(cX, cZ+1);
+        bool down = mD.isWallAtTile(cX, cZ-1);
+        bool left = mD.isWallAtTile(cX-1, cZ);
+        bool right = mD.isWallAtTile(cX+1, cZ);
 
         int walkableAreas = 0;
         string[] dir = new string[4];
@@ -75,7 +76,7 @@ public class PoliceController : MonoBehaviour
         if(!down) { dir[walkableAreas] = "down"; walkableAreas += 1; }
         if(!left) { dir[walkableAreas] = "left"; walkableAreas += 1; }
         if(!right) { dir[walkableAreas] = "right"; walkableAreas += 1; }
-        Debug.Log("Up: " + up + " Down: " + down + " Left: " + left + " Right: " + right);
+        //Debug.Log("Up: " + up + " Down: " + down + " Left: " + left + " Right: " + right);
 
         if(walkableAreas <= 1){
             currentDir = dir[Random.Range(0, walkableAreas)];
@@ -111,10 +112,10 @@ public class PoliceController : MonoBehaviour
         if(pZ < cZ){ tempDirToP[counter] = "down"; counter += 1; }
         //Debug.Log("Preferred: " + tempDirToP[0] + tempDirToP[1] + tempDirToP[2] + tempDirToP[3]);
 
-        bool up = MazeData.isWallAtTile(cX, cZ+1);
-        bool down = MazeData.isWallAtTile(cX, cZ-1);
-        bool left = MazeData.isWallAtTile(cX-1, cZ);
-        bool right = MazeData.isWallAtTile(cX+1, cZ);
+        bool up = mD.isWallAtTile(cX, cZ+1);
+        bool down = mD.isWallAtTile(cX, cZ-1);
+        bool left = mD.isWallAtTile(cX-1, cZ);
+        bool right = mD.isWallAtTile(cX+1, cZ);
 
         counter = 0;
         string[] tempWalkableDir = {"n", "n", "n", "n"};
