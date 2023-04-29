@@ -14,17 +14,18 @@ public class GameOverMenu : MonoBehaviour
     CursorLockMode desiredModes;
 
 
-    void update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (isGameOver)
             {
-                GameOver();
+
+                GameNotOver(); 
             }
             else
             {
-                GameNotOver();
+                GameOver();
             }
         }
     }
