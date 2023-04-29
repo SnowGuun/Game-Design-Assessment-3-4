@@ -7,7 +7,7 @@ public class InventoryUI : MonoBehaviour
 {
     
     private TextMeshProUGUI bookText;
-    [SerializeField] private TextMeshProUGUI staminaText = default;
+   // [SerializeField] private TextMeshProUGUI staminaText = default;
     [SerializeField] private GameObject image;
 
     private void OnEnable()
@@ -42,6 +42,6 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateStamina(float currentStamina)
     {
-        //staminaText.text = currentStamina.ToString("00");
+       //  staminaText.text = currentStamina.ToString("00");
     }
 }
