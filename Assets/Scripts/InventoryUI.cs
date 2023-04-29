@@ -5,8 +5,10 @@ using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
+    
     private TextMeshProUGUI bookText;
     [SerializeField] private TextMeshProUGUI staminaText = default;
+    [SerializeField] private GameObject image;
 
     private void OnEnable()
     {
@@ -23,12 +25,19 @@ public class InventoryUI : MonoBehaviour
         bookText = GetComponent<TextMeshProUGUI>();
         UpdateStamina(30);
 
+
     }
 
    
     public void UpdateBookText(PlayerInventory playerInventory)
     {
         bookText.text = playerInventory.NumberOfBooks.ToString();
+        
+        if (playerInventory.NumberOfBooks == 3) 
+        {
+           // image.SetActive(false);
+            bookText.text = "Go to the Finish";
+        }
     }
 
     private void UpdateStamina(float currentStamina)
