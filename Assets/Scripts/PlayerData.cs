@@ -6,6 +6,12 @@ public class PlayerData : MonoBehaviour
 {
     [SerializeField] private MazeData mD;
 
+    void Start() {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     // Update is called once per frame
     void Update()
     {
