@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WinCondition : MonoBehaviour
 {
+    public GameOverMenu gameOverMenuScript;
     public Transform player;
     public float dist;
     void Update()
@@ -14,7 +15,8 @@ public class WinCondition : MonoBehaviour
             Debug.Log("close enough");
             if(pI.NumberOfBooks >= 3){
                 Debug.Log("Enough Books");
-                LoseCondition.lose();
+                //LoseCondition.lose();
+                gameOverMenuScript.GameOver();
             }
         }
     }

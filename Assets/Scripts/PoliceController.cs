@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PoliceController : MonoBehaviour
 {
+    public GameOverMenu gameOverMenuScript;
     private Vector3 nextTile;
     private string currentDir, excludedDir;
     private bool reachedTile = true;
@@ -20,7 +21,8 @@ public class PoliceController : MonoBehaviour
     void Update()
     {
         if(Vector3.Distance(transform.position, player.transform.position) <= 7){
-            LoseCondition.lose();
+           // LoseCondition.lose();
+            gameOverMenuScript.GameOver();
         }
 
         Ray ray = new Ray(transform.position, player.transform.position - transform.position);
