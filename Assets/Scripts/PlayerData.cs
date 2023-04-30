@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    private Vector3 startingPosition;
-    private bool tagged = false;
-    public void setTagged(bool boolean){ tagged = boolean; }
-
-    void Start()
-    {
-        startingPosition = new Vector3(20, 11, 20);
-        tagged = false;
-    }
+    [SerializeField] private MazeData mD;
 
     // Update is called once per frame
     void Update()
     {
-        if(tagged){
-            Debug.Log("flag");
-            this.transform.TransformPoint(startingPosition);
-            tagged = false;
-        }
+        int pX = (int)(((transform.position.x - ((transform.position.x + 5) % 10)) / 10) + 1);
+        int pZ = (int)(((transform.position.z - ((transform.position.z + 5) % 10)) / 10) + 1);
+
+        bool cen = mD.miniMapWall(pX, pZ);
+        bool up = mD.miniMapWall(pX, pZ+1);
+        bool down = mD.miniMapWall(pX, pZ-1);
+        bool left = mD.miniMapWall(pX-1, pZ);
+        bool right = mD.miniMapWall(pX+1, pZ);
+
+        if(cen){ GameObject.Find(pX + ":" + pZ).GetComponent<Renderer>().material.color = Color.red; }
+        else{ GameObject.Find(pX + ":" + pZ).GetComponent<Renderer>().material.color = Color.black; }
+
+        if(up){ GameObject.Find(pX + ":" + (pZ+1)).GetComponent<Renderer>().material.color = Color.red; }
+        else{ GameObject.Find(pX + ":" + (pZ+1)).GetComponent<Renderer>().material.color = Color.black; }
+
+        if(down){ GameObject.Find(pX + ":" + (pZ-1)).GetComponent<Renderer>().material.color = Color.red; }
+        else{ GameObject.Find(pX + ":" + (pZ-1)).GetComponent<Renderer>().material.color = Color.black; }
+        
+        if(left){ GameObject.Find((pX-1) + ":" + pZ).GetComponent<Renderer>().material.color = Color.red; }
+        else{ GameObject.Find((pX-1) + ":" + pZ).GetComponent<Renderer>().material.color = Color.black; }
+
+        if(right){ GameObject.Find((pX+1) + ":" + pZ).GetComponent<Renderer>().material.color = Color.red; }
+        else{ GameObject.Find((pX+1) + ":" + pZ).GetComponent<Renderer>().material.color = Color.black; }
+        
     }
 }

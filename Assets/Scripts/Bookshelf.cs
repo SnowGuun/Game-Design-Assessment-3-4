@@ -14,9 +14,7 @@ public class Bookshelf : MonoBehaviour
             dist = Vector3.Distance(player.position, new Vector3(transform.position.x + 5, 5, transform.position.z - 5));
             if(Vector3.Distance(player.position, new Vector3(transform.position.x + 12, 5, transform.position.z - 5)) <= 10){
                 PlayerInventory pI = player.gameObject.GetComponent<PlayerInventory>();
-                Debug.Log("close enough");
                 if(pI.NumberOfBooks >= 3){
-                    Debug.Log("Enough Books");
                     triggered = true;
                     rotation = 180;
                 }
@@ -24,8 +22,8 @@ public class Bookshelf : MonoBehaviour
         }
         else{
             if(rotation > 90){
-                rotation -= 5 * Time.deltaTime;
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(transform.rotation.x, rotation, transform.rotation.z),  Time.deltaTime * 5);
+                rotation -= 45 * Time.deltaTime;
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(transform.rotation.x, rotation, transform.rotation.z),  Time.deltaTime * 45);
             }
         }
     }
