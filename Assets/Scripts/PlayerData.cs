@@ -9,7 +9,7 @@ public class PlayerData : MonoBehaviour
     void Start() {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.lockState = CursorLockMode.Confined;
     }
 
     // Update is called once per frame
