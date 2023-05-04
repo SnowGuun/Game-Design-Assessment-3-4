@@ -60,8 +60,8 @@ public class GameOverMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
        
         Time.timeScale = 1f;
-      
-       
+        isGameOver = false;
+
     }
 
     public void NextLevel()
