@@ -14,7 +14,7 @@ public class GameOverMenu : MonoBehaviour
     CursorLockMode desiredModes;
 
 
-    void Update()
+   /* void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -28,7 +28,7 @@ public class GameOverMenu : MonoBehaviour
                 GameOver();
             }
         }
-    }
+    }*/
 
     public void GameOver()
     {
@@ -56,10 +56,12 @@ public class GameOverMenu : MonoBehaviour
 
     public void RestartLevel()
     {
-       // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
+       
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+       
         Time.timeScale = 1f;
-        isGameOver = false;
+      
+       
     }
 
     public void NextLevel()
