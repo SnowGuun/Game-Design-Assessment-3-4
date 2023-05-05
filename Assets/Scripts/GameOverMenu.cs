@@ -14,7 +14,7 @@ public class GameOverMenu : MonoBehaviour
     CursorLockMode desiredModes;
 
 
-    void Update()
+   /* void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -29,7 +29,7 @@ public class GameOverMenu : MonoBehaviour
             }
         }
     }
-
+   */
     public void GameOver()
     {
         gameOverMenu.SetActive(true);
