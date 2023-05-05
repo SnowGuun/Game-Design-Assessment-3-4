@@ -41,31 +41,36 @@ public class GameOverMenu : MonoBehaviour
         {
             Cursor.lockState = desiredModes;
         }
+        Debug.Log("game over");
     }
 
 
     public void GameNotOver()
     {
+
         gameOverMenu.SetActive(false);
         Time.timeScale = 1f;
         isGameOver = false;
         Players.GetComponent<FirstPersonController>().enabled = true;
         Cursor.visible = false;
         desiredModes = CursorLockMode.Confined;
+        Debug.Log("game not over");
        }
 
     public void RestartLevel()
     {
        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1f;
-        isGameOver = false;
+        GameNotOver();
+
     }
 
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Time.timeScale = 1f;
+        GameNotOver();
+
+
     }
 
     public void LoadMenu()

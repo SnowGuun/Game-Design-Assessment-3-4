@@ -7,7 +7,8 @@ public class InventoryUI : MonoBehaviour
 {
     
     private TextMeshProUGUI bookText;
-   // [SerializeField] private TextMeshProUGUI staminaText = default;
+   // private TextMeshProUGUI bookText2;
+    // [SerializeField] private TextMeshProUGUI staminaText = default;
     [SerializeField] private GameObject image;
 
     private void OnEnable()
@@ -37,6 +38,7 @@ public class InventoryUI : MonoBehaviour
         {
            // image.SetActive(false);
             bookText.text = "Go to the Finish";
+            //bookText2.SetActive(false);
         }
     }
 
