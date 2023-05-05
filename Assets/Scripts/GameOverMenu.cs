@@ -59,16 +59,17 @@ public class GameOverMenu : MonoBehaviour
 
     public void RestartLevel()
     {
-       // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GameNotOver();
+       
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+
 
     }
 
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        GameNotOver();
+        Time.timeScale = 1f;
 
 
     }
