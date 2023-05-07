@@ -29,17 +29,6 @@ public class PauseMenu : MonoBehaviour
         }
         
 }
-
-    public void ResumeGame()
-    {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        isGamePaused = false;
-        Player.GetComponent<FirstPersonController>().enabled = true;
-        Cursor.visible = false;
-        desiredMode = CursorLockMode.Confined;
-    }
-
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
@@ -53,8 +42,21 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void ResumeGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        isGamePaused = false;
+        Player.GetComponent<FirstPersonController>().enabled = true;
+        Cursor.visible = false;
+        desiredMode = CursorLockMode.Confined;
+    }
+
+    
+
     public void LoadMenu()
     {
+        
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
     }

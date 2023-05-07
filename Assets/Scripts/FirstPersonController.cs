@@ -76,6 +76,10 @@ public class FirstPersonController : MonoBehaviour
     private Vector2 currentInput;
 
     private float rotationX = 0;
+
+   
+
+
     // Start is called before the first frame update
     void Start()
     {
