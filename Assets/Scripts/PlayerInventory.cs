@@ -14,7 +14,7 @@ public class PlayerInventory : MonoBehaviour
     public UnityEvent<PlayerInventory> onKeyCollected;
     public UnityEvent<PlayerInventory> onMiniMapCollected;
 
-    [SerializeField] GameObject minimap;
+    [SerializeField] GameObject minimap, minimapBorder;
 
     public void BookCollected()
     {
@@ -31,6 +31,7 @@ public class PlayerInventory : MonoBehaviour
     public void miniMapCollected()
     {
         minimap.SetActive(true);
+        minimapBorder.SetActive(true);
         // if (minimapCollected.)
     }
 }

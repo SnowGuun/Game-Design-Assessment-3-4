@@ -32,14 +32,14 @@ public class InventoryUI : MonoBehaviour
    
     public void UpdateBookText(PlayerInventory playerInventory)
     {
-        bookText.text = playerInventory.NumberOfBooks.ToString();
+        bookText.text = playerInventory.NumberOfBooks.ToString() + " / 3";
         
-        if (playerInventory.NumberOfBooks == 3) 
-        {
+        // if (playerInventory.NumberOfBooks == 3) 
+        // {
            
-            bookText.text = "Go to the Finish";
+        //     bookText.text = "Go to the Finish";
            
-        }
+        // }
     }
 
     private void UpdateStamina(float currentStamina)
