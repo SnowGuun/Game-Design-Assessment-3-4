@@ -12,7 +12,7 @@ public class FirstPersonController : MonoBehaviour
     private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
 
     [Header("Functional Options")]
-    [SerializeField] private bool canSprint = true;
+    [SerializeField] private bool canSprint = false;
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool canCrouch = true;
     [SerializeField] private bool useStamina = true;
@@ -77,7 +77,6 @@ public class FirstPersonController : MonoBehaviour
 
     private float rotationX = 0;
 
-   
 
 
     // Start is called before the first frame update
@@ -88,6 +87,7 @@ public class FirstPersonController : MonoBehaviour
         currentStamina = maxStamina;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        canSprint = false;
     }
 
     // Update is called once per frame
@@ -146,7 +146,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleStamina()
     { 
-       if (isSprinting && currentInput != Vector2.zero)
+       if (canSprint && isSprinting && currentInput != Vector2.zero)
         {
             if (regeneratingStamina != null)
             {
@@ -170,10 +170,15 @@ public class FirstPersonController : MonoBehaviour
                 canSprint = false;
         }
 
-       if (!isSprinting &&  currentStamina < maxStamina && regeneratingStamina == null)
+       if (!canSprint && !isSprinting &&  currentStamina < maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
         }
+    }
+
+    public void EnableSprinting()
+    {
+        canSprint = true;
     }
 
     private void HandleFootsteps()
