@@ -7,7 +7,8 @@ public class InventoryUI : MonoBehaviour
 {
     
     private TextMeshProUGUI bookText;
-   // [SerializeField] private TextMeshProUGUI staminaText = default;
+   
+     [SerializeField] private TextMeshProUGUI staminaText;
     [SerializeField] private GameObject image;
 
     private void OnEnable()
@@ -23,7 +24,7 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         bookText = GetComponent<TextMeshProUGUI>();
-        UpdateStamina(30);
+        UpdateStamina(100);
 
 
     }
@@ -31,13 +32,14 @@ public class InventoryUI : MonoBehaviour
    
     public void UpdateBookText(PlayerInventory playerInventory)
     {
-        bookText.text = playerInventory.NumberOfBooks.ToString();
+        bookText.text = playerInventory.NumberOfBooks.ToString() + " / 3";
         
-        if (playerInventory.NumberOfBooks == 3) 
-        {
-           // image.SetActive(false);
-            bookText.text = "Go to the Finish";
-        }
+        // if (playerInventory.NumberOfBooks == 3) 
+        // {
+           
+        //     bookText.text = "Go to the Finish";
+           
+        // }
     }
 
     private void UpdateStamina(float currentStamina)
