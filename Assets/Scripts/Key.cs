@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
+    public AudioClip collectedSound;
     public string colour;
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +14,7 @@ public class Key : MonoBehaviour
         {
             
             playerInventory.keyCollected(colour);
+            AudioSource.PlayClipAtPoint(collectedSound, transform.position);
             gameObject.SetActive(false);
         }
     }
