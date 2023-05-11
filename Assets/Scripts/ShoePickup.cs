@@ -8,15 +8,15 @@ public class ShoePickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            FirstPersonController playerController = other.GetComponent<FirstPersonController>();
-            if (playerController != null)
-            {
+            gameObject.SetActive(false);
 
-                playerController.EnableSprinting();
-                Destroy(gameObject);
+            // Get the FirstPersonController component attached to the player
+            FirstPersonController fpc = other.GetComponent<FirstPersonController>();
 
-            }
-            
+            // Enable the jump functionality sby setting the isJumpEnabled flag to true
+            fpc.isJumpEnabled = true;
+
+
         }
     }
 }

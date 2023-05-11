@@ -10,13 +10,19 @@ public class FirstPersonController : MonoBehaviour
     private bool isSprinting => canSprint && Input.GetKey(sprintKey);
     private bool ShouldJump => Input.GetKeyDown(jumpKey) && characterController.isGrounded;
     private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
+    
 
     [Header("Functional Options")]
-    [SerializeField] private bool canSprint = false;
+    [SerializeField] private bool canSprint = true;
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool canCrouch = true;
     [SerializeField] private bool useStamina = true;
     [SerializeField] private bool useFootsteps = true;
+    public bool isJumpEnabled
+    {
+        get { return canJump; }
+        set { canJump = value; }
+    }
 
 
     [Header("Controls")]
@@ -87,7 +93,7 @@ public class FirstPersonController : MonoBehaviour
         currentStamina = maxStamina;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        canSprint = false;
+        
     }
 
     // Update is called once per frame
@@ -134,7 +140,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleJump()
     {
-        if (ShouldJump)
+        if (isJumpEnabled && ShouldJump)
             moveDirection.y = jumpForce;
     }
 
@@ -146,7 +152,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleStamina()
     { 
-       if (canSprint && isSprinting && currentInput != Vector2.zero)
+       if (isSprinting && currentInput != Vector2.zero)
         {
             if (regeneratingStamina != null)
             {
@@ -170,16 +176,13 @@ public class FirstPersonController : MonoBehaviour
                 canSprint = false;
         }
 
-       if (!canSprint && !isSprinting &&  currentStamina < maxStamina && regeneratingStamina == null)
+       if (!isSprinting &&  currentStamina < maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenerateStamina());
         }
     }
 
-    public void EnableSprinting()
-    {
-        canSprint = true;
-    }
+
 
     private void HandleFootsteps()
     {
