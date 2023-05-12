@@ -43,6 +43,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float staminaValueIncrement = 2;
     [SerializeField] private float staminaTimeIncrement = 0.1f;
     private float currentStamina;
+    public float getStamina() { return currentStamina; }
     private Coroutine regeneratingStamina;
     public static Action<float> onStaminaChange;
 

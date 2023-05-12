@@ -9,7 +9,8 @@ public class InventoryUI : MonoBehaviour
     private TextMeshProUGUI bookText;
    
      [SerializeField] private TextMeshProUGUI staminaText;
-    [SerializeField] private GameObject image;
+   // [SerializeField] private GameObject image;
+   // [SerializeField] private GameObject player;
 
     private void OnEnable()
     {
@@ -24,7 +25,7 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         bookText = GetComponent<TextMeshProUGUI>();
-        UpdateStamina(100);
+        UpdateStamina(30);
 
 
     }
@@ -44,6 +45,12 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateStamina(float currentStamina)
     {
-       //  staminaText.text = currentStamina.ToString("00");
+        GameObject player = GameObject.Find("Player");
+        FirstPersonController fpc = player.GetComponent<FirstPersonController>();
+
+        staminaText.text = fpc.getStamina().ToString("00");
+        //staminaText.text = temp + "";
+        temp--;
     }
+    public float temp = 10;
 }
