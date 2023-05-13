@@ -9,7 +9,7 @@ public class PromptEnabler : MonoBehaviour
     [SerializeField] private GameObject altPrompt;
     [SerializeField] private GameObject promptBackDrop;
     public bool promptActive = false;
-    
+    private float timer = 2;
     private void OnTriggerEnter(Collider other) {
         if(other.transform.name == "Player"){
             if(altPrompt == null){
@@ -39,12 +39,17 @@ public class PromptEnabler : MonoBehaviour
     void Update()
     {
         if(promptActive){
-            if(Input.anyKeyDown){
-                if(altPrompt != null){ altPrompt.SetActive(false); }
-                prompt.SetActive(false);
-                promptBackDrop.SetActive(false);
-                promptActive = false;
-                Time.timeScale = 1.0f;
+            if(timer <= 0){
+                if(Input.anyKeyDown){
+                    if(altPrompt != null){ altPrompt.SetActive(false); }
+                    prompt.SetActive(false);
+                    promptBackDrop.SetActive(false);
+                    promptActive = false;
+                    Time.timeScale = 1.0f;
+                }
+            }
+            else{
+                timer -= 1 * Time.unscaledDeltaTime;
             }
         }
     }
