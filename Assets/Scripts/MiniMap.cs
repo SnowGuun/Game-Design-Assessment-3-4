@@ -18,9 +18,4 @@ public class MiniMap : MonoBehaviour
 
         }
     }
-
-    private void Update()
-    {
-        this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, this.transform.rotation.y + 5, this.transform.rotation.z);
-    }
 }
